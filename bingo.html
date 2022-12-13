@@ -61,7 +61,7 @@
   <div id="container">
     <h1>1~50 빙고 게임</h1>
     <p id="logo">GRIT</p>
-    <button id="btn-pick" onClick="random()">숫자 뽑기(제발)</button>
+    <button onClick="random()">숫자 뽑기(제발)</button>
     <button onClick="reset()">초기화</button>
     <p id="count-num"></p>
     <p id="random-num"></p>
@@ -110,10 +110,15 @@
       if(window.event.keyCode == 32){
         random();
       }
-    }    
+    }
+    function resetKey(e){
+      if(window.event.keyCode == 82 || window.event.keyCode == 114){
+        reset();      
+      }
+    }      
     window.addEventListener('keypress', spaceKey);
     // window.addEventListener("keydown", (e) => random());
-
+    window.addEventListener('keypress', resetKey);
   </script> 
 </body>
 </html>
