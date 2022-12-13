@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bingo</title>
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+  <style>
+    * {
+    margin: 0;
+    background-color: whitesmoke;
+    font-family: 'Jua', sans-serif;
+    }
+
+    #container {
+        width: 100%;
+        text-align: center;
+    }
+
+    h1 {
+        margin: 20px auto;
+        font-size: 80px;
+    }
+
+    #logo{
+        font-size: 50px;
+        font-weight: bold;
+        text-align: right;
+        margin-right: 30px;
+    }
+
+    button {
+        background-color: pink;
+        margin: 20px 80px;
+        border: none;
+        border-radius: 12px;
+        padding: 20px 40px;
+        font-size: 40px;
+        cursor: pointer;
+    }
+
+    #count-num{
+        font-size: 30px;
+        margin-top: 20px;
+    }
+
+    #random-num{
+        font-size: 30px;
+        margin-top: 20px;
+    }
+
+    #latest-num{
+        font-size: 580px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>1~50 빙고 게임</h1>
+    <p id="logo">GRIT</p>
+    <button id="btn-pick" onClick="random()">숫자 뽑기(제발)</button>
+    <button onClick="reset()">초기화</button>
+    <p id="count-num"></p>
+    <p id="random-num"></p>
+    <p id="latest-num"></p>   
+  </div>
+  
+  <script>
+    const arrAll = [];
+      for (let i = 1; i <= 50; i++){
+        arrAll.push(i);
+      }
+
+    function shuffle(array) {
+      array.sort(() => Math.random() - 0.5);
+    }
+
+    let countNum = 0;
+    function onCount(){
+      countNum++;
+      const btnPick = document.getElementById('btn-pick');
+      if(countNum === 50){  
+        btnPick.disabled = true;
+      }
+    }
+
+    const arrResult = [];
+    function random(){
+      shuffle(arrAll);
+
+      let randNum = arrAll.pop();
+      arrResult.push(randNum);
+      // console.log(arrResult);
+      
+      onCount();
+
+      document.getElementById("random-num").innerHTML = arrResult;
+      document.getElementById("latest-num").innerHTML = arrResult[arrResult.length - 1];
+      document.getElementById("count-num").innerHTML = '카운터: ' + countNum;
+    } 
+    
+    function reset(){
+      window.location.reload();
+    }
+
+    function spaceKey(e){
+      if(window.event.keyCode == 32){
+        random();
+      }
+    }    
+    window.addEventListener('keypress', spaceKey);
+    // window.addEventListener("keydown", (e) => random());
+
+  </script> 
+</body>
+</html>
