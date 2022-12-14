@@ -1,0 +1,53 @@
+@font-face {
+    font-family : 'Y-너만을-비춤체';
+    src: url('./Y-너만을-비춤체.woff') format('woff');
+}
+
+* {
+    margin: 0;
+    background-color: whitesmoke;
+    font-family : 'Y-너만을-비춤체';
+}
+
+#container {
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    margin: 15px auto;
+    font-size: 80px;
+}
+
+#logo{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 30px;
+}
+
+button {
+    background-color: pink;
+    margin: 20px 80px;
+    border: none;
+    border-radius: 12px;
+    padding: 20px 40px;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#count-num{
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+#random-num{
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+#latest-num{
+    font-size: 500px;
+}
+
