@@ -3,67 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Bingo</title>
-  <!-- <link rel="stylesheet" href="./style.css"> -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-  <style>
-    * {
-    margin: 0;
-    background-color: whitesmoke;
-    font-family: 'Jua', sans-serif;
-    }
-
-    #container {
-        width: 100%;
-        text-align: center;
-    }
-
-    h1 {
-        margin: 15px auto;
-        font-size: 80px;
-    }
-
-    #logo{
-        font-size: 40px;
-        font-weight: bold;
-        text-align: right;
-        margin-right: 30px;
-    }
-
-    button {
-        background-color: pink;
-        margin: 20px 80px;
-        border: none;
-        border-radius: 12px;
-        padding: 20px 40px;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    #count-num{
-        font-size: 30px;
-        margin-top: 10px;
-    }
-
-    #random-num{
-        font-size: 30px;
-        margin-top: 10px;
-    }
-
-    #latest-num{
-        font-size: 500px;
-    }
-
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div id="container">
-    <h1>1~50 빙고 게임</h1>
+    <h1>읿 1 ~ 50 빙고 게임 왃</h1>
     <p id="logo">GRIT</p>
-    <button onClick="random()">숫자 뽑기(제발)</button>
-    <button onClick="reset()">초기화</button>
+    <button id="btn-pick">숫자 뽑기(스페이스바를 눌러주세요)</button>
+    <button onClick="reset()">초기화(R)</button>
     <p id="count-num"></p>
     <p id="random-num"></p>
     <p id="latest-num"></p>   
@@ -85,6 +32,7 @@
       const btnPick = document.getElementById('btn-pick');
       if(countNum === 50){  
         btnPick.disabled = true;
+        window.removeEventListener('keydown', spaceKey)
       }
     }
 
@@ -107,8 +55,10 @@
       window.location.reload();
     }
 
+    const audio = new Audio('sound.mp3');
     function spaceKey(e){
       if(window.event.keyCode == 32){
+        audio.play();
         random();
       }
     }
@@ -117,9 +67,9 @@
         reset();      
       }
     }      
-    window.addEventListener('keypress', spaceKey);
+    window.addEventListener('keydown', spaceKey);
     // window.addEventListener("keydown", (e) => random());
-    window.addEventListener('keypress', resetKey);
+    window.addEventListener('keydown', resetKey);
   </script> 
 </body>
 </html>
